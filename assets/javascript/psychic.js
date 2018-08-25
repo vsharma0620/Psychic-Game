@@ -5,13 +5,13 @@ var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
 var Wins = 0;
 var Losses = 0;
 var GuessesLeft = 9;
-var GuessesSoFar = " ";
+var GuessesSoFar = [];
 
 // Create variables that hold references to the places in the HTML where we want to display things.
 var winsText = document.getElementById("Wins-text");
 var lossesText = document.getElementById("Losses-text");
 var GuessesLeftText = document.getElementById("GuessesLeft-text");
-var GuessesSoFarText = document.getElementById("GuessesSoFar")
+var GuessesSoFarText = document.getElementById("GuessesSoFar");
 
 // This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
@@ -28,15 +28,24 @@ console.log(computerChoice);
 
     if (userGuess === computerChoice){
         Wins++;
+        GuessesLeft = 9;
+        GuessesSoFar = [];
     }
     else{
 
         GuessesLeft--;
+        GuessesSoFar.push(userGuess);
     }
 
-    if(guess = 0){
+    if(userGuess === 0){
+
         Losses++;
+        GuessesLeft = 9;
+        GuessesSoFar = [];
+
     };  
+//Guesses so far function
+
 
 
 //Display the user and computer guesses, and wins/losses/guesses left.
