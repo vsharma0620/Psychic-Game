@@ -43,11 +43,10 @@ console.log(computerChoice);
         GuessesLeft = 9;
         GuessesSoFar = [];
 
-    };  
-//Guesses so far function
+    };
+    if (GuessesLeft === -1){
 
-
-
+    };
 //Display the user and computer guesses, and wins/losses/guesses left.
 winsText.textContent = "Wins: " + Wins;
 lossesText.textContent = "Losses: " + Losses;
