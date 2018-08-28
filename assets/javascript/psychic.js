@@ -16,12 +16,24 @@ var GuessesSoFarText = document.getElementById("GuessesSoFar");
 // This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
 
+
 // Determines which key was pressed.
-var userGuess = event.key;
+var userGuess =event.key;
 
 //Computer random letter choice
 
 var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+
+//Reset Function
+var reset = function() {
+    GuessesLeft = 9;
+    GuessedSoFar= [];
+    updateLetterToGuess();
+    updateGuessesLeft();
+    updateGuessesSoFar();
+  };
+ 
+  
 
 console.log(computerChoice);
 
@@ -30,6 +42,12 @@ console.log(computerChoice);
         Wins++;
         GuessesLeft = 9;
         GuessesSoFar = [];
+
+        document.querySelector("#Wins").innerHTML = wins;
+
+        // Then we'll reset the game
+        reset();
+    
     }
     else{
 
@@ -42,11 +60,22 @@ console.log(computerChoice);
         Losses++;
         GuessesLeft = 9;
         GuessesSoFar = [];
+    
 
     };
-    if (GuessesLeft === -1){
 
-    };
+    if(GuessesLeft === 0){
+
+       
+        Losses++;
+        GuessesLeft = 9;
+        GuessesSoFar = [];
+
+         // Then we'll reset the game
+         reset();
+    }
+  
+
 //Display the user and computer guesses, and wins/losses/guesses left.
 winsText.textContent = "Wins: " + Wins;
 lossesText.textContent = "Losses: " + Losses;
@@ -54,5 +83,3 @@ GuessesLeftText.textContent = "Guesses Left: " + GuessesLeft;
 GuessesSoFarText.textContent = "Guesses so far: " + GuessesSoFar;
 
 };
-
-
